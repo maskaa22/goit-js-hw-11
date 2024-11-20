@@ -9,6 +9,10 @@ import errorIcon from './img/error.png';
 
 const form = document.querySelector('.form');
 const galery = document.querySelector('ul.galery');
+const loader = document.querySelector('.loader');
+
+// loader.style.disabled = true;
+
 
 iziToast.settings({
   timeout: 4000,
@@ -30,6 +34,8 @@ const createGalary = (e) => {
     return;
   }
 
+  loader.style.display = 'block';
+
   searchImage(searchText)
   .then(({hits}) => {
     
@@ -42,13 +48,12 @@ const createGalary = (e) => {
       imageWidth: 24,
       messageColor: '#fff',
       message: 'Sorry, there are no images matching your search query. Please try again!' });
-
+      loader.style.display = 'none';
       galery.innerHTML = images;
       return;
     }
-
-    galery.innerHTML = images;
-    
+    loader.style.display = 'none';
+    galery.innerHTML = images; 
     form.reset(); 
   })
   .catch(error => {
