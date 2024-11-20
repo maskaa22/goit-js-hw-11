@@ -11,8 +11,10 @@ const form = document.querySelector('.form');
 const galery = document.querySelector('ul.galery');
 const loader = document.querySelector('.loader');
 
-// loader.style.disabled = true;
-
+let lightbox = new SimpleLightbox('.galery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 iziToast.settings({
   timeout: 4000,
@@ -54,6 +56,7 @@ const createGalary = (e) => {
     }
     loader.style.display = 'none';
     galery.innerHTML = images; 
+    lightbox.refresh();
     form.reset(); 
   })
   .catch(error => {
@@ -63,10 +66,3 @@ const createGalary = (e) => {
 }
 
 form.addEventListener('submit', createGalary);
-
-let lightbox = new SimpleLightbox('.galery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
-
-lightbox.on('show.simplelightbox');
