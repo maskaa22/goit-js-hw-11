@@ -1,9 +1,7 @@
-//У файлі render-functions.js створи функції для відображення елементів інтерфейсу.
-
-export const renderImages = (images) => {
-  //console.log(images);
-  
-  return images.map(image => `
+export const renderImages = images => {
+  return images
+    .map(
+      image => `
     <li class='galery-item'>
       <a href=${image.largeImageURL}>
         <img alt=${image.tags} src=${image.webformatURL} class='galery-image'/>
@@ -27,5 +25,7 @@ export const renderImages = (images) => {
         </li>
       </ul>
     </li>
-    `).join('');
-}
+    `
+    )
+    .join('');
+};
