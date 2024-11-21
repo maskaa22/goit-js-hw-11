@@ -53,7 +53,7 @@ ul {
 .button-search:hover {
   background: #6c8cff;
 }
-.galery {
+.gallery {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,11 +61,11 @@ ul {
   flex-wrap: wrap;
   gap: 24px;
 }
-.galery-item {
+.gallery-item {
   border: 1px solid #808080;
   width: 360px;
 }
-.galery-image {
+.gallery-image {
   width: 100%;
 }
 .list-info {
