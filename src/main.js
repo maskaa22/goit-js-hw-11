@@ -23,7 +23,7 @@ iziToast.settings({
 
 const createGalary = e => {
   e.preventDefault();
-
+  loader.style.display = 'block';
   const searchText = e.target.elements.search.value.trim();
 
   if (searchText === '') {
@@ -35,13 +35,14 @@ const createGalary = e => {
       message: 'Please write a query for search',
     });
     gallery.innerHTML = '';
+    loader.style.display = 'none';
     return;
   }
 
   searchImage(searchText)
     .then(({ hits }) => {
       gallery.innerHTML = '';
-      loader.style.display = 'block';
+     
 
       const images = renderImages(hits);
       if (images) {
@@ -66,6 +67,9 @@ const createGalary = e => {
       form.reset();
     })
     .catch(error => {
+      console.log(error);
+      
+      gallery.innerHTML = '';
       iziToast.error({
         iconUrl: errorIcon,
         iconColor: '#fff',
