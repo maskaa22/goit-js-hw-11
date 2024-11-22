@@ -23,6 +23,7 @@ iziToast.settings({
 
 const createGalary = e => {
   e.preventDefault();
+  gallery.innerHTML = '';
   loader.style.display = 'block';
   const searchText = e.target.elements.search.value.trim();
 
